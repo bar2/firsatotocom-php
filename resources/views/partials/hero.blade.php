@@ -7,8 +7,8 @@
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto text-center">
             <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white leading-tight mb-6">
-                Türkiye'nin Araç<br>
-                <span class="text-accent">Analiz Motoru</span>
+                Uygun Araçları<br>
+                <span class="text-accent">Anında Keşfet</span>
             </h1>
             <p class="text-lg sm:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
                 Piyasa analizi, canlı ilan takibi ve doğru fiyat tahmini ile uygun ilanları bulma işi artık bizde. Galeriler ve bireysel alıcılar için tasarlandı.

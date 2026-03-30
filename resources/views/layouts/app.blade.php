@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Fırsat Oto — Türkiye'nin Araç Analiz Motoru</title>
-    <meta name="description" content="Fırsat Oto ile araç piyasa analizi, otomatik ilan değerlendirmesi ile uygun ilan analizi. Galeriler ve bireysel alıcılar için fırsat araçları analiz platformu.">
-    <meta name="keywords" content="araç analiz, araç değerleme, oto, fırsat, uygun ilan, araç fiyat tahmini, ikinci el araç, galeri araç analiz, Türkiye">
+    <title>Fırsat Oto — Uygun Araç Bulan İlan Takip ve Analiz Botu</title>
+    <meta name="description" content="Fırsat Oto, günlük 10.000 aracı otomatik analiz ederek piyasa altı fırsatları WhatsApp ve Telegram ile anında bildirir. Galeriler ve bireysel alıcılar için ilan takip botu, fiyat düşüş bildirimi ve araç değerleme.">
+    <meta name="keywords" content="ilan takip botu, sahibinden ilan takip, araç fiyat takip, uygun araç bulma, ucuz araç, kelepir araç, ikinci el araç analiz, galeri yazılımı, araç fırsat bildirimi, araç değerleme, fiyat düşüş bildirimi, oto galeri ilan takip, WhatsApp araç botu, Telegram araç bildirimi, kelepir ilan">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Fırsat Oto">
     <meta name="theme-color" content="#1B2A4A">
@@ -25,8 +25,8 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ config('app.url') }}">
     <meta property="og:site_name" content="Fırsat Oto">
-    <meta property="og:title" content="Fırsat Oto — Türkiye'nin Araç Analiz Motoru">
-    <meta property="og:description" content="Araç piyasa analizi, canlı ilan takibi ve fiyat tahmini. Galeriler ve bireysel alıcılar için uygun araç bulma platformu.">
+    <meta property="og:title" content="Fırsat Oto — Uygun Araç Bulan İlan Takip Botu">
+    <meta property="og:description" content="Günlük 10.000 aracı analiz eder, piyasa altı fırsatları WhatsApp ve Telegram ile anında bildirir. Galeriler ve alıcılar için.">
     <meta property="og:image" content="{{ config('app.url') }}/images/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -35,8 +35,8 @@
 
     <!-- Twitter / X Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Fırsat Oto — Türkiye'nin Araç Analiz Motoru">
-    <meta name="twitter:description" content="Araç piyasa analizi, canlı ilan takibi ve fiyat tahmini. Uygun araçları anında bulun.">
+    <meta name="twitter:title" content="Fırsat Oto — Uygun Araç Bulan İlan Takip Botu">
+    <meta name="twitter:description" content="Günlük 10.000 aracı analiz eder, piyasa altı fırsatları WhatsApp ve Telegram ile anında bildirir.">
     <meta name="twitter:image" content="{{ config('app.url') }}/images/og-image.png">
 
     <!-- Structured Data: Organization -->
