@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  firsatoto-service:
+    image: firsatoto-service:latest
+    build: .
+    container_name: firsatoto-service
+    volumes:
+      - /var/www/firsatoto-php:/var/www/html
+    ports:
+      - "8102:80"
+    restart: always
+    depends_on:
+      - mysql
+    environment:
+      DB_CONNECTION: mysql
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_DATABASE: firsatoto_db
+      DB_USERNAME: firsatoto_user
+      DB_PASSWORD: xP9mKvQ7w2nYhLdR4sFjT6cA
+      QUEUE_CONNECTION: database
+      CACHE_STORE: database
+      SESSION_DRIVER: database
+
+  mysql:
+    image: mysql:8.0
+    container_name: firsatoto-mysql
+    restart: always
+    volumes:
+      - /var/persisted/mysql/firsatoto-php:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: xP9mKvQ7w2nYhLdR4sFjT6cA
+      MYSQL_DATABASE: firsatoto_db
+      MYSQL_USER: firsatoto_user
+      MYSQL_PASSWORD: xP9mKvQ7w2nYhLdR4sFjT6cA
+    ports:
+      - "3322:3306"

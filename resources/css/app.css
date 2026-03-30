@@ -6,6 +6,303 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
+    --color-navy: #1B2A4A;
+    --color-navy-light: #243556;
+    --color-navy-dark: #111D35;
+    --color-slate-blue: #3B5998;
+    --color-accent: #F97316;
+    --color-accent-hover: #EA580C;
+    --color-light: #F8FAFC;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+@layer components {
+    .animate-fade-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .animate-fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .hero-gradient {
+        background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-slate-blue) 100%);
+    }
+
+    .card-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card-hover:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px rgba(27, 42, 74, 0.15);
+    }
+
+    .stats-gradient {
+        background: linear-gradient(135deg, var(--color-navy-dark) 0%, var(--color-navy) 100%);
+    }
+
+    .cta-gradient {
+        background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-hover) 100%);
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-ring {
+    0% { transform: scale(0.8); opacity: 0.5; }
+    50% { transform: scale(1); opacity: 0.3; }
+    100% { transform: scale(0.8); opacity: 0.5; }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+    animation: float 6s ease-in-out 2s infinite;
+}
+
+.animate-pulse-ring {
+    animation: pulse-ring 4s ease-in-out infinite;
+}
+
+/* ── Lifecycle Production Line ── */
+
+/*
+ * Layout (700px wide, 280px tall):
+ *
+ *   [Source]---track---[Engine]---track---+--- [Trash]    (top)
+ *    80px               280px            |
+ *                                     fork (385px x)
+ *                                        |
+ *                                        +--- [Phone]    (bottom)
+ *
+ * Vertical center = 140px
+ * Source center   = 50px   (left edge 18px)
+ * Engine center   = 280px  (left edge 248px)
+ * Fork x          = 385px
+ * Trash center    = 540px  (top 30px)
+ * Phone center    = 540px  (top 210px)
+ */
+
+.lifecycle-container {
+    position: relative;
+    height: 300px;
+    width: 700px;
+}
+
+.lifecycle-stage {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 2;
+}
+
+.lifecycle-box {
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+    border: 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lifecycle-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #6b7280;
+    white-space: nowrap;
+}
+
+.lifecycle-engine-box {
+    box-shadow: 0 0 0 4px rgba(27, 42, 74, 0.1), 0 8px 24px rgba(27, 42, 74, 0.2);
+}
+
+/* Station positions (px based) */
+.lifecycle-source { left: 18px;  top: 108px; }
+.lifecycle-engine { left: 248px; top: 108px; }
+.lifecycle-trash  { left: 508px; top: 10px;  }
+.lifecycle-phone  { left: 508px; top: 196px; }
+
+/* ── Track lines ── */
+
+/* Source → Engine (horizontal) */
+.lifecycle-track {
+    position: absolute;
+    top: 140px;
+    left: 82px;
+    width: 166px;
+    height: 3px;
+    background: #d1d5db;
+    z-index: 1;
+}
+
+/* Engine → Fork point (horizontal) */
+.lifecycle-container::before {
+    content: '';
+    position: absolute;
+    top: 140px;
+    left: 312px;
+    width: 90px;
+    height: 3px;
+    background: #d1d5db;
+    z-index: 1;
+}
+
+/* Fork vertical up to trash (red) */
+.lifecycle-container::after {
+    content: '';
+    position: absolute;
+    left: 400px;
+    top: 42px;
+    width: 3px;
+    height: 100px;
+    background: #fca5a5;
+    z-index: 1;
+}
+
+/* Fork vertical down to phone (green) */
+.lifecycle-track-reject {
+    position: absolute;
+    left: 400px;
+    top: 140px;
+    width: 3px;
+    height: 88px;
+    background: #86efac;
+    z-index: 1;
+}
+
+/* Horizontal branch: fork → trash */
+.lifecycle-trash::before {
+    content: '';
+    position: absolute;
+    top: 32px;
+    left: -110px;
+    width: 110px;
+    height: 3px;
+    background: #fca5a5;
+}
+
+/* Horizontal branch: fork → phone */
+.lifecycle-phone::before {
+    content: '';
+    position: absolute;
+    top: 32px;
+    left: -110px;
+    width: 110px;
+    height: 3px;
+    background: #86efac;
+}
+
+/* ── Cars ── */
+.lifecycle-car {
+    position: absolute;
+    top: 128px;
+    z-index: 1;
+    opacity: 0;
+}
+
+/* Full cycle: 11s total, each car does source→engine→destination */
+.car-1 {
+    animation: car1-full 11s ease-in-out infinite;
+}
+.car-2 {
+    animation: car2-full 11s ease-in-out infinite;
+}
+.car-3 {
+    animation: car3-full 11s ease-in-out infinite;
+}
+
+/* Car 1: rejected — smooth path through engine, forks up to trash */
+@keyframes car1-full {
+    0%   { left: 86px;  top: 128px; opacity: 0; transform: scale(0.8); }
+    3%   { left: 86px;  top: 128px; opacity: 1; transform: scale(1); }
+    20%  { left: 310px; top: 128px; opacity: 1; transform: scale(1); }
+    30%  { left: 390px; top: 128px; opacity: 1; transform: scale(0.9); }
+    40%  { left: 390px; top: 30px;  opacity: 0.4; transform: scale(0.6) rotate(-10deg); }
+    45%  { left: 390px; top: 30px;  opacity: 0; transform: scale(0.5) rotate(-15deg); }
+    100% { left: 390px; top: 30px;  opacity: 0; transform: scale(0.5); }
+}
+
+/* Car 2: rejected — same smooth path, delayed */
+@keyframes car2-full {
+    0%   { left: 86px;  top: 128px; opacity: 0; transform: scale(0.8); }
+    30%  { left: 86px;  top: 128px; opacity: 0; transform: scale(0.8); }
+    33%  { left: 86px;  top: 128px; opacity: 1; transform: scale(1); }
+    50%  { left: 310px; top: 128px; opacity: 1; transform: scale(1); }
+    60%  { left: 390px; top: 128px; opacity: 1; transform: scale(0.9); }
+    70%  { left: 390px; top: 30px;  opacity: 0.4; transform: scale(0.6) rotate(-10deg); }
+    75%  { left: 390px; top: 30px;  opacity: 0; transform: scale(0.5) rotate(-15deg); }
+    100% { left: 390px; top: 30px;  opacity: 0; transform: scale(0.5); }
+}
+
+/* Car 3 (orange): accepted — smooth path through engine, forks down to phone */
+@keyframes car3-full {
+    0%   { left: 86px;  top: 128px; opacity: 0; transform: scale(0.8); }
+    58%  { left: 86px;  top: 128px; opacity: 0; transform: scale(0.8); }
+    61%  { left: 86px;  top: 128px; opacity: 1; transform: scale(1); }
+    78%  { left: 310px; top: 128px; opacity: 1; transform: scale(1); }
+    86%  { left: 390px; top: 128px; opacity: 1; transform: scale(1); }
+    95%  { left: 390px; top: 216px; opacity: 1; transform: scale(1.1); filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.6)); }
+    100% { left: 390px; top: 216px; opacity: 0; transform: scale(1.1); filter: drop-shadow(0 0 0 transparent); }
+}
+
+/* Responsive: scale 700px layout to fit viewport width */
+.lifecycle-wrapper {
+    display: flex;
+    justify-content: center;
+    overflow: visible;
+}
+
+/* 750px viewport → scale 700 to ~710px usable = 1.0 */
+@media (max-width: 750px) {
+    .lifecycle-container {
+        transform: scale(0.95);
+        transform-origin: top center;
+        height: 266px; /* 280 * 0.95 */
+    }
+}
+
+/* 640px → scale to ~600px usable, 600/700 ≈ 0.85 */
+@media (max-width: 640px) {
+    .lifecycle-container {
+        transform: scale(0.82);
+        transform-origin: top center;
+        height: 230px;
+    }
+}
+
+/* 480px → scale to ~450px usable, 450/700 ≈ 0.64 */
+@media (max-width: 480px) {
+    .lifecycle-container {
+        transform: scale(0.58) translateX(-40px);
+        transform-origin: top center;
+        height: 174px;
+    }
+}
+
+/* 390px → scale to ~358px usable, 358/700 ≈ 0.51 */
+@media (max-width: 400px) {
+    .lifecycle-container {
+        transform: scale(0.53) translateX(-60px);
+        transform-origin: top center;
+        height: 160px;
+    }
 }
