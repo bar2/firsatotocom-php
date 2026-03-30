@@ -1,0 +1,22 @@
+# Fırsat Oto
+
+## About
+Fırsat Oto is Turkey's car analysis engine. It automatically analyzes 8,000-10,000 new car listings daily, tracks price changes, and sends instant notifications when matching vehicles are found at favorable prices. Built for car dealers (galeri) and individual car buyers in Turkey.
+
+## Core Features
+- **Yeni Araç Analizi (New Vehicle Analysis):** Automatically scans all new listings and identifies deals within seconds.
+- **Fiyat Takibi (Price Tracking):** Monitors price changes across all listings and notifies when a price drop makes a vehicle a good deal.
+- **Özel Arama (Custom Search):** Instant alerts when a vehicle matching your exact criteria is listed — not hours later, instantly.
+- **Akıllı Açıklama Analizi (Smart Description Analysis):** Parses listing descriptions for damage history, paint/body repairs, and mechanical issues.
+- **Fiyat Tahmini (Price Estimation):** AI-powered and live market data-driven price estimation for accurate valuations.
+
+## Target Audience
+- Car dealerships (galeriler) in Turkey
+- Individual car buyers looking for deals in the second-hand market
+
+## Location
+Istanbul, Turkey
+
+## Contact
+- Website: https://firsatoto.com
+- Email: info@firsatoto.com

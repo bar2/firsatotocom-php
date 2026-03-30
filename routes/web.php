@@ -14,7 +14,7 @@ Route::post('/api/leads', [LeadController::class, 'store'])
 Route::get('/sitemap.xml', function () {
     $content = '<?xml version="1.0" encoding="UTF-8"?>';
     $content .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
-    $content .= '<url><loc>' . config('app.url') . '</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>';
+    $content .= '<url><loc>' . config('app.url') . '</loc><lastmod>' . date('Y-m-d') . '</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>';
     $content .= '</urlset>';
 
     return response($content, 200, ['Content-Type' => 'application/xml']);
