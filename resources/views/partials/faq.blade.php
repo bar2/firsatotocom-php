@@ -51,7 +51,7 @@
         </div>
     </div>
 
-    <!-- FAQPage Structured Data -->
+    <!-- FAQPage Structured Data (synced with visible DOM questions) -->
     <script type="application/ld+json">
     {
         "@@context": "https://schema.org",
@@ -59,10 +59,18 @@
         "mainEntity": [
             {
                 "@@type": "Question",
-                "name": "Fırsat Oto hangi araçları analiz edebilir?",
+                "name": "Ücretsiz deneme süresi var mı?",
                 "acceptedAnswer": {
                     "@@type": "Answer",
-                    "text": "Fırsat Oto, Türkiye'de satışı yapılan tüm binek ve hafif ticari araçları analiz edebilir. Veritabanımız sürekli güncellenmekte olup tüm popüler marka ve modelleri kapsamaktadır."
+                    "text": "Evet, 7 gün boyunca ücretsiz deneyebilirsiniz. Amacımız sistemimize dahil olan her yeni üyeyle sistemimizi daha iyi hale getirmek."
+                }
+            },
+            {
+                "@@type": "Question",
+                "name": "Fırsat Oto hangi araçları analiz eder?",
+                "acceptedAnswer": {
+                    "@@type": "Answer",
+                    "text": "Fırsat Oto, Türkiye'de satışı yapılan 2010 üstü, ağır hasar kayıtsız tüm binek, SUV ve hafif ticari araçları analiz eder."
                 }
             },
             {
@@ -75,26 +83,10 @@
             },
             {
                 "@@type": "Question",
-                "name": "Ücretsiz deneme süresi var mı?",
+                "name": "Gönderdiğiniz tüm ilanlar gerçekten uygun mu?",
                 "acceptedAnswer": {
                     "@@type": "Answer",
-                    "text": "Evet, tüm planlarımızda 7 gün ücretsiz deneme süresi sunuyoruz. Kredi kartı bilgisi gerekmeden hemen başlayabilirsiniz."
-                }
-            },
-            {
-                "@@type": "Question",
-                "name": "Bayiler için toplu analiz nasıl çalışır?",
-                "acceptedAnswer": {
-                    "@@type": "Answer",
-                    "text": "Profesyonel ve Kurumsal planlarda CSV dosyası yükleyerek yüzlerce aracı aynı anda analiz edebilirsiniz. Sonuçlar detaylı bir rapor olarak indirilir."
-                }
-            },
-            {
-                "@@type": "Question",
-                "name": "Hasar kaydı sorgulama hangi kaynakları kullanıyor?",
-                "acceptedAnswer": {
-                    "@@type": "Answer",
-                    "text": "Sigorta şirketleri, Tramer kayıtları ve resmi kurum verileri başta olmak üzere çoklu kaynaktan veri toplayarak kapsamlı bir hasar geçmişi raporu oluşturuyoruz."
+                    "text": "Fırsat Oto gelen tüm ilanların doğruluğunu maksimuma çıkarmak için kurgulanmıştır, ancak bunun garantisini vermemiz yine de mümkün değil. Yanlış fiyatlandırılan, fiyatı yayınlandıktan sonra hemen değişen ilanlar haricinde ilanların çoğu piyasa koşullarında uygun olan araçlardır."
                 }
             }
         ]
