@@ -5,8 +5,6 @@ namespace App\Console\Commands;
 use App\Models\Lead;
 use App\Services\TelegramService;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\URL;
-
 class RemindUnreachedLeads extends Command
 {
     protected $signature = 'leads:remind';
@@ -23,7 +21,7 @@ class RemindUnreachedLeads extends Command
 
         $lines = $leads->map(fn ($lead) => "• {$lead->name} — {$lead->phone} ({$lead->created_at->diffForHumans()})");
 
-        $markAllUrl = URL::temporarySignedRoute('leads.mark-all-reached', now()->addHours(24));
+        $markAllUrl = route('leads.mark-all-reached', ['token' => config('services.telegram.chat_id')]);
 
         $telegram->sendMessageWithButton(
             "<b>⏰ Ulaşılmamış Başvurular ({$leads->count()})</b>\n\n"

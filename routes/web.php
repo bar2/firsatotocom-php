@@ -11,11 +11,15 @@ Route::post('/api/leads', [LeadController::class, 'store'])
     ->middleware('throttle:5,1')
     ->name('leads.store');
 
-Route::get('/leads/mark-all-reached', function () {
+Route::get('/leads/mark-all-reached', function (Illuminate\Http\Request $request) {
+    if ($request->query('token') !== config('services.telegram.chat_id')) {
+        abort(403);
+    }
+
     $count = App\Models\Lead::where('reached_out', false)->update(['reached_out' => true]);
 
     return response("<h1>✅ {$count} başvuru 'ulaşıldı' olarak işaretlendi.</h1>", 200, ['Content-Type' => 'text/html; charset=utf-8']);
-})->name('leads.mark-all-reached')->middleware('signed');
+})->name('leads.mark-all-reached');
 
 Route::get('/sitemap.xml', function () {
     $content = '<?xml version="1.0" encoding="UTF-8"?>';
