@@ -26,7 +26,7 @@ class RemindUnreachedLeads extends Command
         $telegram->sendMessageWithButton(
             "<b>⏰ Ulaşılmamış Başvurular ({$leads->count()})</b>\n\n"
             . $lines->implode("\n")
-            . "\n\n<i>Bu bildirim her dakika tekrarlanır.</i>",
+            . "\n\n<i>Bu bildirim her saat tekrarlanır.</i>",
             'Tümünü Ulaşıldı İşaretle ✅',
             $markAllUrl
         );

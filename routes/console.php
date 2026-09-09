@@ -9,6 +9,6 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Schedule::command('leads:remind')
-    ->everyMinute()
+    ->hourly()
     ->unlessBetween('02:00', '09:00')
     ->timezone('Europe/Istanbul');
